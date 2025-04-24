@@ -1,6 +1,6 @@
 # 💳 PagBank Card Encryption Demo
 
-This project provides a simple and responsive web interface for testing credit card encryption using the [PagBank JavaScript SDK](https://developer.pagbank.com.br/reference/sdks#javascript). It is ideal for developers working with PagBank recurring payment solutions.
+This project provides a simple and responsive web interface for testing credit card encryption using the [PagBank JavaScript SDK](https://developer.pagbank.com.br/docs/criptografia-e-chave-publica). It is ideal for developers working with PagBank recurring payment solutions.
 
 ## 🚀 Try It Online
 
