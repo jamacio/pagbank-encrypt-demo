@@ -1,0 +1,81 @@
+body {
+  transition: background 0.3s, color 0.3s;
+}
+
+.card {
+  border-radius: 1rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+body.dark-mode .form-control:disabled,
+body.dark-mode .form-select:disabled {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+body.dark-mode .form-check-input {
+  background-color: #444;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .card.card-header {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+  color: #80cbc4;
+}
+
+body.dark-mode h2,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode .form-label,
+body.dark-mode .form-check-label,
+body.dark-mode pre,
+body.dark-mode code {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .bg-light {
+  background-color: #2a2a2a !important;
+}
+
+body.dark-mode ::placeholder {
+  color: #aaa !important;
+  opacity: 1;
+}
+
+body.dark-mode .btn-outline-secondary {
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #444;
+  color: #fff;
+}

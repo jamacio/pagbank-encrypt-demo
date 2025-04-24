@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PagBank card encryption demo">
+  <meta name="author" content="Jamácio Rocha">
+  <title>PagBank Encrypt Demo</title>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/pagseguro.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container py-5">
+    <div class="d-flex justify-content-end mb-3">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="darkModeToggle">
+        <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+      </div>
+    </div>
+    <h2 class="text-center mb-4">PagBank Encryption</h2>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">How to generate and use your public key</h5>
+        <p>To <strong>generate</strong> your public key in the <em>Sandbox</em> environment, use the following command:
+        </p>
+        <pre class="bg-light p-3 rounded"><code>curl -X PUT \
+  https://sandbox.api.assinaturas.pagseguro.com/public-keys \
+  -H "Authorization: Bearer YOUR_TOKEN"
+</code></pre>
+        <p>Then, to <strong>retrieve</strong> the created key and get the <code>publicKey</code> value, run:</p>
+        <pre class="bg-light p-3 rounded"><code>curl -X GET \
+  https://sandbox.api.assinaturas.pagseguro.com/public-keys \
+  -H "Authorization: Bearer YOUR_TOKEN"
+</code></pre>
+        <p>Replace <code>YOUR_TOKEN</code> with your access <em>Bearer Token</em>. In the JSON response, copy the full
+          <code>publicKey</code> content and paste it in the field below.
+        </p>
+        <p>More details at <a href="https://developer.pagbank.com.br/reference/criar-chave-publica-pagamento-recorrente"
+            target="_blank">Create Public Key - PagBank</a>.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm">
+          <h6 class="mb-3">Card Data</h6>
+          <div class="mb-3">
+            <label for="test_card" class="form-label">Test Cards (<a
+                href="https://developer.pagbank.com.br/docs/cartoes-de-teste" target="_blank">Docs</a>)</label>
+            <select id="test_card" class="form-select">
+              <option value="">-- Select --</option>
+              <option value="4539620659922097|123|12|2026">Visa - Approved</option>
+              <option value="4929291898380766|123|12|2026">Visa - Declined</option>
+              <option value="5240082975622454|123|12|2026">Mastercard - Approved</option>
+              <option value="5530062640663264|123|12|2026">Mastercard - Declined</option>
+              <option value="345817690311361|1234|12|2026">Amex - Approved</option>
+              <option value="372938001199778|1234|12|2026">Amex - Declined</option>
+              <option value="4389350446134811|123|12|2026">Elo - Approved</option>
+              <option value="6062828598919021|123|12|2026">Elo - Declined</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Card Number</label>
+            <input type="text" class="form-control" id="number" placeholder="Card number" maxlength="16">
+          </div>
+          <div class="mb-3">
+            <label for="holder" class="form-label">Cardholder</label>
+            <input type="text" class="form-control" id="holder" placeholder="Cardholder name" value="Tony Stark">
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-4">
+              <label for="cvc" class="form-label">CVC</label>
+              <input type="text" class="form-control" id="cvc" placeholder="CVC" maxlength="4" value="">
+            </div>
+            <div class="col-4">
+              <label for="month" class="form-label">Month</label>
+              <input type="text" class="form-control" id="month" placeholder="Month" maxlength="2" value="">
+            </div>
+            <div class="col-4">
+              <label for="year" class="form-label">Year</label>
+              <input type="text" class="form-control" id="year" placeholder="Year" maxlength="4" value="">
+            </div>
+          </div>
+          <button id="encrypt" class="btn btn-success w-100">Encrypt</button>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm">
+          <h6 class="mb-3">Public Key</h6>
+          <textarea id="public_key" class="form-control mb-3" rows="6"
+            placeholder="Paste your public key here"></textarea>
+          <h6 class="mb-2">Generated Hash</h6>
+          <div class="input-group mb-3">
+            <textarea id="encrypted_value" class="form-control" rows="3" disabled></textarea>
+            <button class="btn btn-outline-secondary" type="button" id="copyBtn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/custom.js"></script>
+</body>
+
+</html>
